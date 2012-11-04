@@ -60,14 +60,6 @@ function data (el) {
   data.api.el = el;
   data.api.cache = cache;
   return data.api;
-  return ({
-    cache: cache,
-    del: del,
-    set: set,
-    has: has,
-    get: get,
-    el: el
-  });
 }
 
 /**

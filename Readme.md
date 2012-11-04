@@ -28,9 +28,9 @@ data(el).get();
 ### api.get([key])
 
 Get all data or a single value by `key`,
-if the `key` does not exists it will be lookedup
-in the element `data-*` attributes cached and then
-returned.
+if the `key` does not exists it will be looked-up
+in the element `data-*` attributes, when found
+it will be cached and then returned.
 
 ```javascript
 data(el).get('foo');
@@ -42,6 +42,11 @@ data(el).get();
 ### api.has(key)
 
 Wether or not `key` exists
+
+```
+data(el).set('foo', 'bar').has('foo');
+// > true
+```
 
 ### api.del([key])
 
@@ -60,6 +65,17 @@ the element cache
 
 the element.
 
+### add custom methods.
+
+```javascript
+data.api.getUserAge = function () {
+  return this.cache.user
+    && this.cache.user.age;
+};
+
+data(el).set({ user: { age: 99 } }).getUserAge();
+// > 99
+```
 
 
 ## License
