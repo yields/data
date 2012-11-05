@@ -6,13 +6,13 @@
 module.exports = data;
 
 /**
- * unique id
+ * global unique id
  */
 
-data.uniq = 1;
+data.uniq = 0;
 
 /**
- * cache.
+ * global cache.
  */
 
 data.cache = {};
@@ -34,12 +34,15 @@ data.api = {
  * example:
  *
  *        var el = document.scripts[0];
+ *
  *        data(el)
  *          .set({ foo: bar })
  *          .set('hello', 'world')
- *          .has('foo') // > true
- *          .del('foo')
- *          .has('foo') // > false
+ *
+ *        data(el).has('foo')
+ *        // > true
+ *        data(el).del('foo').has('foo');
+ *        // > false
  *
  *        data(el).get();
  *        // > { hello: 'world' }
@@ -53,10 +56,9 @@ data.api = {
  */
 
 function data (el) {
-  var id = el.__uniqId || data.uniq++
-    , cache = (data.cache[id] = data.cache[id] || {});
-
-  el.__uniqId = id;
+  var id = el.__uniq || ++data.uniq, cache;
+  cache = (data.cache[id] = data.cache[id] || {});
+  el.__uniq = id;
   data.api.el = el;
   data.api.cache = cache;
   return data.api;
@@ -165,6 +167,7 @@ function del (key) {
   if (key) {
     delete this.cache[key];
   } else {
+    data.cache[this.el.__uniq] =
     this.cache = {};
   }
 
