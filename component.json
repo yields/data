@@ -2,7 +2,7 @@
   "name": "data",
   "repo": "yields/data",
   "description": "attach data to elements. think $.data().",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": ["data", "data api", "html5"],
   "dependencies": {},
   "development": {},
