@@ -41,7 +41,7 @@ data(el).get();
 
 ### api.has(key)
 
-Wether or not `key` exists
+Whether or not `key` exists
 
 ```
 data(el).set('foo', 'bar').has('foo');

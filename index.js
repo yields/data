@@ -127,7 +127,7 @@ function get (k) {
 }
 
 /**
- * Check wether or not `key` exists.
+ * Check whether or not `key` exists.
  *
  * example:
  *
